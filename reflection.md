@@ -56,6 +56,8 @@ When selecting difficulty the range still stays the same even though from lookin
 
 ---
 
+I decided to test if a bug was really fix by first writing the unit tests for it and then validating it on the UI with the propper flow and what I expected. I repeated this for all bugs. I even did it in parrell by having cladue run the unit tests while I validated on the UI and then came back to read the terminal message. 
+
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
@@ -64,9 +66,14 @@ When selecting difficulty the range still stays the same even though from lookin
 
 ---
 
+The code needs to check if the secret exists before generating a new one and overiding it. So we added if the secret is not in the state already then we generate a new one. 
+
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+
+I liked using plan mode to review the thought process before having the LLM make changes to my codebase. It helps me understand the changes much better and results in a faster approval process.
