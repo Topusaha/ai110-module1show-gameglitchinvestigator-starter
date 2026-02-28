@@ -32,27 +32,38 @@ def parse_guess(raw: str):
     return True, value, None
 
 
-def check_guess(guess, secret):
+def check_guess(guess, secret, low=None, high=None):
     """
     Compare guess to secret and return (outcome, message).
 
-    outcome examples: "Win", "Too High", "Too Low"
+    outcome examples: "Win", "Too High", "Too Low", "Out of Bounds"
+
+    Args:
+        guess: The user's guess
+        secret: The secret number to compare against
+        low: Optional lower bound for valid guesses
+        high: Optional upper bound for valid guesses
     """
+    # Check bounds first if provided
+    if low is not None and high is not None:
+        if guess < low or guess > high:
+            return "Out of Bounds", f"⚠️ Guess must be between {low} and {high}!"
+
     if guess == secret:
         return "Win", "🎉 Correct!"
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!"
+        return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):

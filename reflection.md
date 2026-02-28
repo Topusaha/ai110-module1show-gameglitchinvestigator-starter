@@ -34,6 +34,12 @@ The game looked simple enough when I first ran it. 4 bugs I found where the foll
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
+
+BugFix 1: check_int not returning the right message
+LLM of choice: Claude
+AI was able to succesfully find the bug on where the messages was backwards. When it should say go higher the function was returning go lower and vice versa. When I had it make unit tests, it went overboard and stated testing edge cases that are duplicated logic of the other tests. In the eyes of AI these are legit edge cases that could happen, however if the function is written the correct way you it should not be treated as edge cases. So we refactored the function to ensure those edge cases does not exist as an input. Such as entering out of bounds. 
+
+
 ---
 
 ## 3. Debugging and testing your fixes
