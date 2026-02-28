@@ -8,6 +8,24 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
 
+
+The game looked simple enough when I first ran it. 4 bugs I found where the following.
+
+1. The game consistently tells me I should guess lower even when I pick the lower bound for each difficulty. 
+2. Attempts left shows -1 instead of 0 when I run out of attempts to guess. This is only true when show hint is selected. 
+3. When I press new game it does not refresh the session, the UI changes but I can't guess unless I refresh the page. 
+4. I am able to select numbers out of range, there should be a warning that I am out of range instead of executing. 
+5. It sometimes tells me to go higher even though I am inputting a number bigger then the top end of the range, so there seems to be a disconnect between the UI and game logic. 
+
+
+
+2 Issues I am selecting to fix are the following. 
+1. The UI logic not connected to the game logic
+  - Adding in bounds for lower and upper guesses without executing
+  - Fixing the hint logic to proper tell the user go lower or higher 
+  - Fixing the inconsistecy between the show hint selected which is issue 2
+2. Refreshing the game when I click New Game
+
 ---
 
 ## 2. How did you use AI as a teammate?
