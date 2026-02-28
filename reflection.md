@@ -35,9 +35,14 @@ The game looked simple enough when I first ran it. 4 bugs I found where the foll
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
 
-BugFix 1: check_int not returning the right message
 LLM of choice: Claude
+
+BugFix 1: check_int not returning the right message
 AI was able to succesfully find the bug on where the messages was backwards. When it should say go higher the function was returning go lower and vice versa. When I had it make unit tests, it went overboard and stated testing edge cases that are duplicated logic of the other tests. In the eyes of AI these are legit edge cases that could happen, however if the function is written the correct way you it should not be treated as edge cases. So we refactored the function to ensure those edge cases does not exist as an input. Such as entering out of bounds. 
+
+BugFix 2: Difficulty selection issue
+When selecting difficulty the range still stays the same even though from looking a the logic from get_range_for_difficulty it should change. One mistake the LLM made is that after I made the comment which function to look at it only considered that function and did not see how it is used in app.py for the actual error. While the helper funciton is correct the usecase is wrong and that is where the bug was. I prompted it to look for it by tracing the useage of the function and plan a fix. 
+
 
 
 ---
